@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Jamie's Shopping Cart", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -25,20 +25,28 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+                <div class="navbar-right" id=" = "cart-details">
+                    @Html.Action("Summary","Carts")
+                </div>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <div class="well well-lg col-lg-3">
+              @Html.Action("Menu" , "Categorites" ,         new { selectedCategoryId = ViewBag.SelectedCategoryId != null ? ViewBag.SelectedCategoryId : 0 }  )
+        </div>
+        <div class="col-lg-9">@RenderBody()</div>
+        
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*Scripts.Render("~/bundles/jquery")*@
+    @*Scripts.Render("~/bundles/bootstrap")*@
+    @Scripts.Render("~/bundles/shoppingCart")
     @RenderSection("scripts", required: false)
 </body>
 </html>
